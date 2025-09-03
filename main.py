@@ -13,22 +13,14 @@ def main():
 
     if len(sys.argv) < 2:
         print("Please provide a prompt")
-        return
+        sys.exit(1)
 
     prompt = sys.argv[1]
 
     response = client.models.generate_content(
         model="gemini-2.0-flash",
         contents=
-        """
-        tulis cerita singkat tentang seorang pengusaha sukses
-        namanya adalah prayitno 
-        dia memiliki 2 saudara kembar yaitu dua sastra
-        mereka tinggal bersama ayah dan ibu mereka di desa sederhana
-        mereka memiliki 2 kakak yaitu budi dan toni
-        budi adalah seorang pengusaha sukses
-        """,
-
+        prompt,
     )
 
     print(response.text)
